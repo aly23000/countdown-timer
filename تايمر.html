@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العد التنازلي لعيد ميلاد حبيبي</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://files.catbox.moe/uib7qp.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        .countdown-container {
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+            max-width: 600px;
+            margin: 20px;
+            position: relative;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+        .countdown {
+            font-size: 4em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 30px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-family: 'Digital', 'Arial', sans-serif;
+        }
+        .label {
+            font-size: 1.5em;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+        
+        @font-face {
+            font-family: 'Digital';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/fonts-droid/1.0.0/DroidSansMono.ttf') format('truetype');
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="countdown-container">
+        <h1> استني المفاجأه 🥰</h1>
+        <div class="countdown" id="countdown">00:00:00</div>
+        <div class="label">ثواني : دقائق : ساعات</div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+            const diff = midnight - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
